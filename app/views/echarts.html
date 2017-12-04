@@ -1,0 +1,120 @@
+<script src="https://cdn.bootcss.com/echarts/3.6.2/echarts.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://gallery.echartsjs.com/dep/echarts/latest/extension/bmap.min.js"></script>
+<script type="text/javascript"
+        src="http://api.map.baidu.com/getscript?v=2.0&amp;ak=uHkkRqHOFj3Z6Ajv3lLhCD8WjYjb6rFM&amp;services=&amp;t=20171031174121"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&amp;ak=uHkkRqHOFj3Z6Ajv3lLhCD8WjYjb6rFM"></script>
+<script src="http://echarts.baidu.com/asset/map/js/china.js"></script>
+<style>
+    body, html {
+        padding: 0;
+        margin: 0;
+        width:100%;
+        overflow: scroll;
+    }
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+</style>
+<div id="main" style="width: 100%;height:100%;"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+    option = {
+        backgroundColor: '#0E2A43',
+        legend: {
+            bottom: 20,
+            textStyle: {
+                color: '#fff',
+            },
+            data: ['最低薪资', '最高薪资']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '10%',
+            containLabel: true
+        },
+        tooltip: {
+            show: "true",
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        xAxis: {
+            type: 'value',
+            axisTick: {show: false},
+            axisLine: {
+                show: false,
+                lineStyle: {
+                    color: '#fff',
+                }
+            },
+            splitLine: {
+                show: false
+            },
+        },
+        yAxis: [
+            {
+                type: 'category',
+                axisTick: {show: false},
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: '#fff',
+                    }
+                },
+                data: ['广州', '深圳', '东莞', '天津', '惠州', '北京三级', '成都', '南京', '重庆',]
+            },
+            {
+                type: 'category',
+                axisLine: {show: false},
+                axisTick: {show: false},
+                axisLabel: {show: false},
+                splitArea: {show: false},
+                splitLine: {show: false},
+                data: ['广州', '深圳', '东莞', '天津', '惠州', '北京三级', '成都', '南京', '重庆']
+            },
+
+        ],
+        series: [
+            {
+                name: '有效房源量',
+                type: 'bar',
+                yAxisIndex: 1,
+
+                itemStyle: {
+                    normal: {
+                        show: true,
+                        color: '#277ace',
+                        barBorderRadius: 50,
+                        borderWidth: 0,
+                        borderColor: '#333',
+                    }
+                },
+                barGap: '0%',
+                barCategoryGap: '50%',
+                data: [120, 132, 101, 134, 90, 230, 210, 125, 231,]
+            },
+            {
+                name: '钥匙量',
+                type: 'bar',
+                itemStyle: {
+                    normal: {
+                        show: true,
+                        color: '#5de3e1',
+                        barBorderRadius: 50,
+                        borderWidth: 0,
+                        borderColor: '#333',
+                    }
+                },
+                barGap: '0%',
+                barCategoryGap: '50%',
+                data: [32, 52, 41, 64, 15, 10, 32, 25, 210,]
+            }
+
+        ]
+    };
+    myChart.setOption(option);
+</script>
